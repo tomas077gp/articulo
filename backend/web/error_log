@@ -1,0 +1,2 @@
+[03-Feb-2017 07:40:43 Asia/Shanghai] PHP Fatal error:  Call to a member function getAvatarUrl() on null in /home/sig/public_html/yii2_base-master/vendor/dektrium/yii2-user/views/settings/_menu.php on line 24
+[03-Feb-2017 08:03:32 Asia/Shanghai] PHP Fatal error:  Call to a member function getAvatarUrl() on null in /home/sig/public_html/yii2_base-master/vendor/dektrium/yii2-user/views/settings/_menu.php on line 24

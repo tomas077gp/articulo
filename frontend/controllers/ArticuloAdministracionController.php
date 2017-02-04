@@ -6,10 +6,12 @@ use Yii;
 use frontend\models\Articulo;
 use frontend\models\Escuelas;
 use frontend\models\ArticuloSearch;
+use frontend\models\ArticuloAutores;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use frontend\models\ArticuloCategoria;
 /**
  * ArticuloController implements the CRUD actions for Articulo model.
  */
@@ -95,6 +97,34 @@ class ArticuloAdministracionController extends Controller
         $model = new Articulo();
 
         if ($model->load(Yii::$app->request->post()) ) {
+            
+            /*Almacenando los datos en la tabla articulo categoria*/
+            $id_articulo = Articulo::find()->max('id_articulo');
+           
+            $modelCategoria = new ArticuloCategoria();
+            
+       
+            $modelCategoria ->id_categoria = $model->id_categoria;
+            $modelCategoria ->id_articulo = ($id_articulo);
+            
+            
+
+            $modelCategoria->save();
+            /*Almacenando los datos en la tabla articulo categoria*/
+            
+            /*Almacenando los datos en la tabla articulo autores*/
+         
+           
+            $modelAutores = new ArticuloAutores();
+            
+       
+            $modelAutores ->id_autores = $model->id_docente;
+            $modelAutores ->id_articulo = ($id_articulo);
+            $modelAutores ->puntaje_autor = $model->puntaje_articulo;
+            
+
+            $modelAutores->save();
+            /*Almacenando los datos en la tabla articulo autores*/
 
             $nombre_articulo = $model->nombre_articulo;
 

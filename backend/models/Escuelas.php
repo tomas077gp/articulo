@@ -29,7 +29,7 @@ class Escuelas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre_escuela'], 'string', 'max' => 60],
+            [['nombre_escuela'], 'string', 'max' => 100],
         ];
     }
 

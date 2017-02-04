@@ -3,7 +3,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use kartik\grid\GridView;
-use johnitvn\ajaxcrud\CrudAsset;
+use johnitvn\ajaxcrud\CrudAsset; 
 use johnitvn\ajaxcrud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
@@ -33,16 +33,16 @@ CrudAsset::register($this);
                     '{toggleData}'.
                     '{export}'
                 ],
-            ],
+            ],          
             'striped' => true,
             'condensed' => true,
-            'responsive' => true,
+            'responsive' => true,          
             'panel' => [
-                'type' => 'primary',
-                'heading' => '<i class="glyphicon glyphicon-list"></i> Listado de Categorias',
-                'before'=>'<em>* Cambiar el tamaño de las columnas de la tabla como una hoja de cálculo arrastrando los bordes de la columna.</em>',
+                'type' => 'primary', 
+                'heading' => '<i class="glyphicon glyphicon-list"></i> Categorias listing',
+                'before'=>'<em>* Resize table columns just like a spreadsheet by dragging the column edges.</em>',
                 'after'=>BulkButtonWidget::widget([
-                            'buttons'=>Html::a('<i class="glyphicon glyphicon-trash"></i>&nbsp; Borrar Todo',
+                            'buttons'=>Html::a('<i class="glyphicon glyphicon-trash"></i>&nbsp; Delete All',
                                 ["bulk-delete"] ,
                                 [
                                     "class"=>"btn btn-danger btn-xs",
@@ -52,7 +52,7 @@ CrudAsset::register($this);
                                     'data-confirm-title'=>'Are you sure?',
                                     'data-confirm-message'=>'Are you sure want to delete this item'
                                 ]),
-                        ]).
+                        ]).                        
                         '<div class="clearfix"></div>',
             ]
         ])?>

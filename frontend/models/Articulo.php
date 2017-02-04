@@ -30,6 +30,8 @@ class Articulo extends \yii\db\ActiveRecord
 {
   public $file;
   public $anio;
+  public $id_categoria;
+  public $id_docente;
     /**
      * @inheritdoc
      */
@@ -50,6 +52,8 @@ class Articulo extends \yii\db\ActiveRecord
             [['id_escuela', 'id_estados'], 'required'],
             [['id_escuela', 'id_estados'], 'integer'],
             [['id_escuela'], 'required'],
+            [['id_categoria'], 'required'],
+            [['id_docente'], 'required'],
             [['nombre_articulo'], 'string', 'max' => 200],
             [['nombre_articulo'], 'required'],
             [['ciudad'], 'string', 'max' => 80],
@@ -86,6 +90,8 @@ class Articulo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Escuelas::className(), ['id_escuela' => 'id_escuela']);
     }
+    
+
 
     /**
      * @return \yii\db\ActiveQuery

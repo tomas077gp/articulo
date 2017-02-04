@@ -42,7 +42,7 @@ return [
         ],
 
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => false,
             'showScriptName' => false,
             'rules' => [
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
@@ -53,23 +53,23 @@ return [
 
     ],
 	'modules' => [
-    'user' => [
-        'class' => 'dektrium\user\Module',
-        'enableUnconfirmedLogin' => true,
-        'confirmWithin' => 21600,
-        'cost' => 12,
-        'admins' => ['admin']
-    ],
-    'audit' => [
-    
-            'class' => 'bedezign\yii2\audit\Audit',
-            'accessUsers' => [1, 2, 3],
- 
-     ],
-	'rbac' => [
-                 'class' => 'dektrium\rbac\RbacConsoleModule',
+            'user' => [
+                'class' => 'dektrium\user\Module',
+                'enableUnconfirmedLogin' => false,
+                'confirmWithin' => 21600,
+                'cost' => 12,
+                'admins' => ['superadmin','marc']
+            ],
+            'audit' => [
+
+                    'class' => 'bedezign\yii2\audit\Audit',
+                    'accessUsers' => [1, 2, 3],
+
+             ],
+            'rbac' => [
+                     'class' => 'dektrium\rbac\RbacConsoleModule',
+            ],
+            'gridview' => ['class' => 'kartik\grid\Module'],
         ],
-	'gridview' => ['class' => 'kartik\grid\Module'],
-],
     'params' => $params,
 ];

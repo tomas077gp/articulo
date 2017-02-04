@@ -11,7 +11,6 @@ use Yii;
  * @property string $nombre_categoria
  *
  * @property ArticuloCategoria[] $articuloCategorias
- * @property Articulo[] $idArticulos
  */
 class Categoria extends \yii\db\ActiveRecord
 {
@@ -31,7 +30,7 @@ class Categoria extends \yii\db\ActiveRecord
         return [
             [['id_categoria'], 'required'],
             [['id_categoria'], 'integer'],
-            [['nombre_categoria'], 'string', 'max' => 15],
+            [['nombre_categoria'], 'string', 'max' => 100],
         ];
     }
 
@@ -51,14 +50,6 @@ class Categoria extends \yii\db\ActiveRecord
      */
     public function getArticuloCategorias()
     {
-        return $this->hasMany(ArticuloCategoria::className(), ['id_categoria1' => 'id_categoria']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getIdArticulos()
-    {
-        return $this->hasMany(Articulo::className(), ['id_articulo' => 'id_articulo', 'id_escuela' => 'id_escuela', 'id_estados' => 'id_estados', 'id_categoria' => 'id_categoria'])->viaTable('articulo_categoria', ['id_categoria1' => 'id_categoria']);
+        return $this->hasMany(ArticuloCategoria::className(), ['id_categoria' => 'id_categoria']);
     }
 }

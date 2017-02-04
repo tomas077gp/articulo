@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "articulo_autores".
  *
  * @property integer $id_articulo
- * @property integer $id_escuela
+ * @property integer $id_articulo_autores
  * @property integer $id_autores
- * @property string $puntaje_autor
+ * @property double $puntaje_autor
  *
  * @property Articulo $idArticulo
  * @property Docentes $idAutores
@@ -31,11 +31,11 @@ class ArticuloAutores extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_articulo', 'id_escuela', 'id_autores'], 'required'],
-            [['id_articulo', 'id_escuela', 'id_autores'], 'integer'],
-            [['puntaje_autor'], 'string', 'max' => 40],
-            [['id_articulo', 'id_escuela'], 'exist', 'skipOnError' => true, 'targetClass' => Articulo::className(), 'targetAttribute' => ['id_articulo' => 'id_articulo', 'id_escuela' => 'id_escuela']],
-            [['id_autores', 'id_escuela'], 'exist', 'skipOnError' => true, 'targetClass' => Docentes::className(), 'targetAttribute' => ['id_autores' => 'id_docente', 'id_escuela' => 'id_escuela']],
+            [['id_articulo', 'id_autores'], 'required'],
+            [['id_articulo', 'id_autores'], 'integer'],
+            [['puntaje_autor'], 'number'],
+            [['id_articulo'], 'exist', 'skipOnError' => true, 'targetClass' => Articulo::className(), 'targetAttribute' => ['id_articulo' => 'id_articulo']],
+            [['id_autores'], 'exist', 'skipOnError' => true, 'targetClass' => Docentes::className(), 'targetAttribute' => ['id_autores' => 'id_docente']],
         ];
     }
 
@@ -46,7 +46,7 @@ class ArticuloAutores extends \yii\db\ActiveRecord
     {
         return [
             'id_articulo' => 'Id Articulo',
-            'id_escuela' => 'Id Escuela',
+            'id_articulo_autores' => 'Id Articulo Autores',
             'id_autores' => 'Id Autores',
             'puntaje_autor' => 'Puntaje Autor',
         ];
@@ -57,7 +57,7 @@ class ArticuloAutores extends \yii\db\ActiveRecord
      */
     public function getIdArticulo()
     {
-        return $this->hasOne(Articulo::className(), ['id_articulo' => 'id_articulo', 'id_escuela' => 'id_escuela']);
+        return $this->hasOne(Articulo::className(), ['id_articulo' => 'id_articulo']);
     }
 
     /**
@@ -65,6 +65,6 @@ class ArticuloAutores extends \yii\db\ActiveRecord
      */
     public function getIdAutores()
     {
-        return $this->hasOne(Docentes::className(), ['id_docente' => 'id_autores', 'id_escuela' => 'id_escuela']);
+        return $this->hasOne(Docentes::className(), ['id_docente' => 'id_autores']);
     }
 }

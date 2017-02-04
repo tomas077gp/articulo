@@ -7,6 +7,7 @@ use kartik\select2\Select2;
 use frontend\models\Estados;
 use frontend\models\Escuelas;
 use frontend\models\Categoria;
+use frontend\models\Docentes;
 use yii\helpers\ArrayHelper;
 use kartik\touchspin\TouchSpin;
 use kartik\date\DatePicker;
@@ -16,6 +17,7 @@ use yii\helpers\Url;
 /* @var $model frontend\models\Articulo */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+
 
 <div class="articulo-form">
 
@@ -86,17 +88,48 @@ use yii\helpers\Url;
   </div>
 
 </div>
-
-
-    <?php
+ <?php
         echo $form->field($model, 'id_escuela')->label('Escuela')->widget(Select2::classname(), [
-            'data'  =>[3=>'Gestión Ambiental'],
+            'data'  =>[5=>'Administración de Empresas'],
             //'options' => ['placeholder' => 'Seleccione la opción...'],
             'pluginOptions' => [
             'allowClear' => true
             ],
         ]);
     ?>
+    
+        <?php
+        echo $form->field($model, 'id_categoria')->label('Categoria')->widget(Select2::classname(), [
+            'data'  => ArrayHelper::map(Categoria::find()->all(), 'id_categoria', 'nombre_categoria'),
+            'options' => ['placeholder' => 'Seleccione la opción...'],
+            'pluginOptions' => [
+            'allowClear' => true
+            ],
+        ]);
+    ?>
+    
+    
+            <?php
+            
+            $docentes = Docentes::find()->orderBy('nombre_docente')->all();
+            $data = ArrayHelper::map(
+                $docentes,
+                'id_docente',
+                function ($docentes, $defaultValue) {
+                    return $docentes->getNombreCompleto();
+                }
+                
+            );
+               
+        echo $form->field($model, 'id_docente')->label('Autores')->widget(Select2::classname(), [
+            'data'  => $data,
+            'options' => ['placeholder' => 'Seleccione la opción...'],
+            'pluginOptions' => [
+            'allowClear' => true
+            ],
+        ]);
+    ?>
+
 
     <?php
         echo $form->field($model, 'id_estados')->label('Estados')->widget(Select2::classname(), [

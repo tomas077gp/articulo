@@ -7,6 +7,7 @@ use kartik\select2\Select2;
 use frontend\models\Estados;
 use frontend\models\Escuelas;
 use frontend\models\Categoria;
+use frontend\models\Docentes;
 use yii\helpers\ArrayHelper;
 use kartik\touchspin\TouchSpin;
 use kartik\date\DatePicker;
@@ -16,6 +17,7 @@ use yii\helpers\Url;
 /* @var $model frontend\models\Articulo */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+
 
 <div class="articulo-form">
 

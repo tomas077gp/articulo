@@ -28,7 +28,7 @@ class Estados extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre_estado'], 'string', 'max' => 20],
+            [['nombre_estado'], 'string', 'max' => 100],
         ];
     }
 

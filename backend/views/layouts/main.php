@@ -39,31 +39,17 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
             } else {
 
+                
+                $menuItems [] = ['label' => 'FRONTEND', 'url' => ['/../../frontend/web']];
 
                 $menuItems[] = [
-                    'label' => 'Administraci¨®n',
+                    'label' => 'ADMINISTRACIÃ“N',
                     'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
                     'items' => [
                         ['label' => 'Usuarios', 'url' => ['/user/admin/index'],],
                     ],
                 ];
 
-                $menuItems[] = [
-                    'label' => 'Auditor¨ªa',
-                    'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
-                    'items' => [
-                        ['label' => 'Accesos', 'url' => ['/audit/entry'],],
-
-                        ['label' => 'Acciones', 'url' => ['/audit/trail'],],
-
-                        ['label' => 'Inicio de sesi¨®n', 'url' => ['/logs/index'],],
-
-                    ],
-                ];
-
-
-
-                $menuItems [] = ['label' => 'FRONTEND', 'url' => ['/../../frontend/web']];
 
                 $menuItems [] = ['label' => 'AUDITORIA', 'url' => ['/audit'],];
                 

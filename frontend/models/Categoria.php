@@ -30,7 +30,7 @@ class Categoria extends \yii\db\ActiveRecord
         return [
             [['id_categoria'], 'required'],
             [['id_categoria'], 'integer'],
-            [['nombre_categoria'], 'string', 'max' => 15],
+            [['nombre_categoria'], 'string', 'max' => 100],
         ];
     }
 

@@ -73,4 +73,9 @@ class Docentes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Escuelas::className(), ['id_escuela' => 'id_escuela']);
     }
+    
+    public function getNombreCompleto()
+    {
+        return $this->nombre_docente . ' ' . $this->apellidos_docente;
+    }
 }
